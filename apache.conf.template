@@ -1,0 +1,43 @@
+1 <VirtualHost *:8080>
+2     # The ServerName directive sets the request scheme, hostname and port that
+3     # the server uses to identify itself. This is used when creating
+4     # redirection URLs. In the context of virtual hosts, the ServerName
+5     # specifies what hostname must appear in the request's Host: header to
+6     # match this virtual host. For the default virtual host (this file) this
+7     # value is not decisive as it is used as a last resort host regardless.
+8     # However, you must set it for any further virtual host explicitly.
+9     #ServerName www.example.com
+10
+11     ServerAdmin webmaster@localhost
+12     DocumentRoot /Path/To/Project/Folder/
+13
+14
+15     <Directory />
+16         Options FollowSymLinks
+17         AllowOverride None
+18     </Directory>
+19
+20     <Directory /Path/To/Project/Folder/>
+21         Options Indexes FollowSymLinks MultiViews
+22         AllowOverride All
+23         Require all granted
+24     </Directory>
+25
+26     # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+27     # error, crit, alert, emerg.
+28     # It is also possible to configure the loglevel for particular
+29     # modules, e.g.
+30     #LogLevel info ssl:warn
+31
+32     ErrorLog ${APACHE_LOG_DIR}/error.log
+33     CustomLog ${APACHE_LOG_DIR}/access.log combined
+34
+35     # For most configuration files from conf-available/, which are
+36     # enabled or disabled at a global level, it is possible to
+37     # include a line for only one particular virtual host. For example the
+38     # following line enables the CGI configuration for this host only
+39     # after it has been globally disabled with "a2disconf".
+40     #Include conf-available/serve-cgi-bin.conf
+41 </VirtualHost>
+42
+43 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
