@@ -1,0 +1,10 @@
+{
+	"name": "ProgNett",
+	"description": "blæ",
+	"version": "1.0",
+	"date": "201-03-04",
+	"author": "Mattis Bratland",
+	"author_uri": "http://prognett.no",
+	"license": "None",
+	"min_q2a": "1.7"
+}

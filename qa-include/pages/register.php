@@ -75,9 +75,13 @@
 		if (qa_user_limits_remaining(QA_LIMIT_REGISTRATIONS)) {
 			require_once QA_INCLUDE_DIR.'app/users-edit.php';
 
-			$inemail = qa_post_text('email');
+			//original
+
+			//$inemail = qa_post_text('email');
 			$inpassword = qa_post_text('password');
 			$inhandle = qa_post_text('handle');
+			//edit for ifi users only
+			$inemail = $inhandle . '@uio.no';
 			$interms = (int) qa_post_text('terms');
 
 			$inprofile = array();
@@ -163,6 +167,7 @@
 				'error' => qa_html(@$errors['password']),
 			),
 
+			//Remove email for ifi users
 			'email' => array(
 				'label' => qa_lang_html('users/email_label'),
 				'tags' => 'name="email" id="email" dir="auto"',
