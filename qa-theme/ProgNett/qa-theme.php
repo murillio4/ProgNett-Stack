@@ -264,7 +264,7 @@ class qa_html_theme extends qa_html_theme_base
 		$this->header();
 
 		if(isset($this->content['navigation']['sub'])){
-			if(sizeof($this->content['navigation']['sub']) > 11){
+			if($this->template == 'admin'){
 				$this->output('<div class="container" style="padding-top:120px;">', '');
 			}else{
 				$this->output('<div class="container">', '');
@@ -275,14 +275,13 @@ class qa_html_theme extends qa_html_theme_base
 
 			$this->output('<div id="-content">', '');
 			$this->widgets('full', 'high');
-
+		if ($this->template == 'user' || $this->template == 'favorites' || $this->template == 'account' || strpos($this->template, 'user-') !== false || $this->template == 'admin')
+			$this->output('<div id="mainbar" style="width:100%;">', '');
+		else
 			$this->output('<div id="mainbar">', '');
 				$this->main();
 			$this->output('</div> <!-- END mainbar -->');
-			$this->output('<div id="sidebar">', '');
-				$this->sidepanel();
-			$this->output('</div> <!-- END mainbar -->');
-
+			$this->sidepanel();
 			$this->widgets('full', 'low');
 			$this->output('</div> <!-- END content -->');
 		$this->output('</div> <!-- END container -->');
@@ -305,7 +304,7 @@ class qa_html_theme extends qa_html_theme_base
 				$this->nav_main_sub();
 			$this->output('</div <!-- END -container -->');
 			if(isset($this->content['navigation']['sub'])){
-				if(sizeof($this->content['navigation']['sub']) > 6){
+				if($this->template == 'admin'){
 					$this->output('<div class="-sub">');
 						$this->output('<div class="-container">');
 							$this->nav('sub');
@@ -344,9 +343,11 @@ class qa_html_theme extends qa_html_theme_base
 	public function sidepanel()
 	{
 		// remove sidebar for user profile pages
-		if ($this->template == 'user')
+		if ($this->template == 'user' || $this->template == 'favorites' || $this->template == 'account' || strpos($this->template, 'user-') !== false || $this->template == 'admin')
 			return;
 
+
+		$this->output('<div id="sidebar">', '');
 		$this->output('<div id="qam-sidepanel-toggle"><i class="icon-left-open-big"></i></div>');
 		$this->output('<div class="qa-sidepanel"');
 		$this->widgets('side', 'top');
@@ -359,6 +360,7 @@ class qa_html_theme extends qa_html_theme_base
 		$this->feed();
 		$this->widgets('side', 'bottom');
 		$this->output('</div> <!-- qa-sidepanel -->', '');
+		$this->output('</div> <!-- END mainbar -->');
 	}
 
 	/**
@@ -422,7 +424,7 @@ class qa_html_theme extends qa_html_theme_base
 		$this->output($this->content['title']);
 
 		if(isset($this->content['navigation']['sub'])){
-			if(sizeof($this->content['navigation']['sub']) <= 6){
+			if($this->template != 'admin'){
 				$this->nav('sub');
 			}
 		}
@@ -616,6 +618,13 @@ class qa_html_theme extends qa_html_theme_base
 			'</div>'
 		);
 		parent::attribution();
+	}
+
+	public function form_button_data($button, $key, $style)
+	{
+		$baseclass = 'qa-form-'.$style.'-button qa-form-'.$style.'-button-'.$key;
+
+		$this->output('<input'.rtrim(' '.@$button['tags']).' value="'.@$button['label'].'" title="'.@$button['popup'].'" type="submit" class="btn btn-primary"/>');
 	}
 
 	/**

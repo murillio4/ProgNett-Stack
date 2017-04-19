@@ -29,4 +29,7 @@ define('UIO_PLUGIN_DIR', dirname(__FILE__));
 qa_register_plugin_module('filter', 'uio_filter.php', 'UIO_Filter', 'UIO Filter');
 qa_register_plugin_layer('uio_register.php', 'UIO register fix');
 qa_register_plugin_overrides('pages-override.php');
+
+qa_register_plugin_overrides('avatar/qa-avatar-users-edit.php');
+qa_register_plugin_overrides('avatar/qa-avatar-format.php');
 //qa_register_plugin_phrases('lang/pupi_mtl_*.php', 'pupi_mtl');

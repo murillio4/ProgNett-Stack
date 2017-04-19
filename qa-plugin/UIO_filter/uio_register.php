@@ -11,6 +11,7 @@
 			  $this->content['form_profile']['fields']['email']['type'] = 'static';
 			  $this->content['form_profile']['fields']['email']['error'] = '';
 
+			  unset($this->content['form_profile']['fields']['avatar']['options']['']);
 		  }
 
 	      qa_html_theme_base::main(); // call back through to the default function
