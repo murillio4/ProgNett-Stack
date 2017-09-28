@@ -19,3 +19,6 @@ Now you can open "http://localhost:8080"
 Do what the website tells you to do
 
 To edit themes go to **qa-themes**, add a new folder and create a theme.
+
+
+This project is deprecated due to lack of flexebility
