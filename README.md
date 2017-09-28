@@ -1,4 +1,4 @@
-**How to install this shit :)**
+**How to install it :)**
 
 First make sure that **Apache2**, **PHP** and **MySQL** is installed.
 
@@ -18,4 +18,4 @@ Configuring apache2:
 Now you can open "http://localhost:8080"
 Do what the website tells you to do
 
-To edit themes go to **qa-themes**, add a new folder and create a theme. LUL
+To edit themes go to **qa-themes**, add a new folder and create a theme.
